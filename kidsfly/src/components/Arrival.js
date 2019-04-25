@@ -1,0 +1,1 @@
+// dumb component for displaying an arrival

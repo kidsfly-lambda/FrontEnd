@@ -73,6 +73,8 @@ class UserForm extends React.Component {
                   onChange={this.handleChange} 
                   />    
 
+                  <button>Submit</button>
+
             </form>
         </div>
           )

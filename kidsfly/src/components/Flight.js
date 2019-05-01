@@ -2,6 +2,7 @@
 
 
 
+
 import React from 'react'
 import BookingForm from './BookingForm'
 
@@ -72,3 +73,4 @@ class Flight extends React.Component {
       );
     }
   }
+

@@ -13,13 +13,6 @@ class UserForm extends React.Component {
         }
       };
 
-      handleLogin = e => {
-        e.preventDefault();
-        this.props
-          .login(this.state.signup)
-          .then(() => this.props.history.push("/user"));
-      };
-    
     
       handleChange = e => {
         this.setState({
@@ -34,7 +27,7 @@ class UserForm extends React.Component {
       render() {
         return(
         <div className='signup-form'>
-            <form onSubmit={this.handleLogin}>
+
                 <label for='name'>Name</label>
                 <input
                   type='text'
@@ -81,7 +74,6 @@ class UserForm extends React.Component {
                   onChange={this.handleChange} 
                   />    
 
-                  <button>Submit</button>
 
             </form>
         </div>

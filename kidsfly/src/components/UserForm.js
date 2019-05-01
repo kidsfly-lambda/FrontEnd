@@ -12,6 +12,7 @@ class UserForm extends React.Component {
             password: ''
         }
       };
+
     
       handleChange = e => {
         this.setState({
@@ -26,7 +27,7 @@ class UserForm extends React.Component {
       render() {
         return(
         <div className='signup-form'>
-            <form>
+
                 <label for='name'>Name</label>
                 <input
                   type='text'
@@ -72,6 +73,7 @@ class UserForm extends React.Component {
                   value={this.state.signup.password}
                   onChange={this.handleChange} 
                   />    
+
 
             </form>
         </div>

@@ -27,7 +27,7 @@ class UserForm extends React.Component {
       render() {
         return(
         <div className='signup-form'>
-
+              <form>
                 <label for='name'>Name</label>
                 <input
                   type='text'

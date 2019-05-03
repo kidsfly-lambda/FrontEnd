@@ -1,5 +1,11 @@
 import React from 'react'
 
+import Loader from 'react-loader-spinner';
+
+import { connect } from 'react-redux';
+
+import { login } from '../actions';
+
 class Login extends React.Component {
     state = {
         login: {
@@ -51,7 +57,24 @@ class Login extends React.Component {
             placeholder = 'Password'
             value = { this.state.login.password }
             onChange = { this.handleInput }
-            /> <
+            />
+
+
+            <
+            button > {
+                this.props.loggingIn ? ( <
+                    Loader type = "ThreeDots"
+                    color = "green"
+                    height = "10"
+                    width = "30" / >
+                ) : (
+                    'Login'
+                )
+            } <
+            /button>
+
+
+            <
             /form>
         )
     }
@@ -59,4 +82,10 @@ class Login extends React.Component {
 }
 
 
-export default Login
+const mapStateToProps = ({ loggingIn }) => ({
+    loggingIn
+});
+
+export default connect(
+    mapStateToProps, { login }
+)(Login);

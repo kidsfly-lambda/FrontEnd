@@ -1,6 +1,8 @@
 // controlled component for adding a new Airport Admin
 
 import React from 'react'
+import { connect } from "react-redux";
+import { addUsers } from '../actions'
 
 class AdminForm extends React.Component {
     state = {
@@ -15,14 +17,24 @@ class AdminForm extends React.Component {
       };
 
 
-      handleLogin = e => {
+      handleSignup = e => {
         e.preventDefault();
         this.props
-          .login(this.state.signup)
-          .then(() => this.props.history.push("/admin"));
+          .addUsers(this.state.signup);
+          this.setState({
+            signup: {
+              name: '',
+              address: '',
+              email: '',
+              username: '',
+              password: '',
+              location: ''
+            }
+          })
+        
       };
     
-      handleChange = e => {
+      inputHandleSignup = e => {
         this.setState({
           signup: {
             ...this.state.signup,
@@ -35,14 +47,14 @@ class AdminForm extends React.Component {
       render() {
         return(
         <div className='signup-form'>
-            <form onSubmit={this.handleLogin}>
+            <form onSubmit={this.handleSignup}>
                 <label for='name'>Name</label>
                 <input
                   type='text'
                   name='name'
                   placeholder='Name'
                   value={this.state.signup.name}
-                  onChange={this.handleChange} 
+                  onChange={this.inputHandleSignup} 
                   />
 
                 <label for='address'>Address</label>
@@ -51,7 +63,7 @@ class AdminForm extends React.Component {
                   name='address'
                   placeholder='Address'
                   value={this.state.signup.address}
-                  onChange={this.handleChange} 
+                  onChange={this.inputHandleSignup} 
                   />
 
                 <label for='email'>Email</label>
@@ -60,7 +72,7 @@ class AdminForm extends React.Component {
                   name='email'
                   placeholder='E-Mail'
                   value={this.state.signup.email}
-                  onChange={this.handleChange} 
+                  onChange={this.inputHandleSignup} 
                   />
 
                 <label for='username'>UserName</label>
@@ -69,7 +81,7 @@ class AdminForm extends React.Component {
                   name='username'
                   placeholder='UserName'
                   value={this.state.signup.username}
-                  onChange={this.handleChange} 
+                  onChange={this.inputHandleSignup} 
                   />
 
 
@@ -79,17 +91,17 @@ class AdminForm extends React.Component {
                   name='password'
                   placeholder='Password'
                   value={this.state.signup.password}
-                  onChange={this.handleChange} 
+                  onChange={this.inputHandleSignup} 
                   />    
 
 
-            <label for='location'>PassWord</label>
+                <label for='location'>Location</label>
                 <input
                   type='text'
                   name='location'
                   placeholder='Location'
                   value={this.state.signup.location}
-                  onChange={this.handleChange} 
+                  onChange={this.inputHandleSignup} 
                   />    
 
 
@@ -101,5 +113,16 @@ class AdminForm extends React.Component {
       }
 }
 
+const mapStateToProps = state => {
+  return {
+    users: state.users
+  };
+};
 
-export default AdminForm
+
+export default connect(
+  mapStateToProps,
+  { addUsers }
+)(AdminForm);
+
+

@@ -1,34 +1,59 @@
 import React from 'react';
-import UserForm from './components/UserForm'
-import BookingForm from './components/BookingForm'
-import Flights from '../src/containers/Flights'
-import { Route } from 'react-router-dom'
+import UserForm from './components/UserForm';
+import Login from './components/Login';
+import BookingForm from './components/BookingForm';
+import Flights from '../src/containers/Flights';
+import { Route , withRouter} from 'react-router-dom';
 import './App.css';
 import AdminForm from './components/AdminForm';
 
 // function App() {
 //   return (
 //     <div className="App">
-//         {/* <Route path='/home' component={UserForm} />
-//         <Route exact path='/' component={BookingForm}/> */}
+//         <Route path='/home' component={UserForm} />
+//         <Route exact path='/' component={BookingForm}/> 
 
-// <BookingForm />
-// <Arrivals />
 //     </div>
 //   );
 // }
 
 
 class App extends React.Component {
-  render() {
-    return(
-      <>
-      <AdminForm />
-      <BookingForm />
-      <Flights />
-      </>
-    )
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: null,
+      firstName: "Louis",
+      lastName: "Magdaleno",
+      loginErr: null,
+      signUpErr: null,
+      ready: false
+    };
   }
+
+
+  signOut = _ => {
+    localStorage.clear();
+    this.setState({ user: null });
+  };
+  render() {
+    return (
+    
+        <Route
+          exact
+          path="/"
+          component={props => (
+            <Login
+              user={this.state.user}
+              history={props.history}
+              
+            />
+          )}
+        />
+    )}
+        
+  
 }
 
-export default App;
+
+export default withRouter(App);

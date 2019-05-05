@@ -14,7 +14,7 @@ export const REGISTER_FAILURE = "REGISTER_FAILURE";
 
 export const login = creds => dispatch => {
     dispatch({ type: LOGIN_START });
-    return axios.post('http://localhost:3333/login', creds).then(res => {
+    return axios.post('https://kidsfly.herokuapp.com/login', creds).then(res => {
         localStorage.setItem('token', res.data.payload);
         dispatch({ type: LOGIN_SUCCESS, payload: res.data.payload });
     });

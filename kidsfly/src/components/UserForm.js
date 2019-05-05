@@ -23,6 +23,14 @@ class UserForm extends React.Component {
         });
       };
 
+      handleLogin = e => {
+        e.preventDefault()
+        this.props.signup(this.state.signup)
+        this.setState({
+          signup: {name: '', address: '', email: '', username: '', password: ''}
+        })
+      }
+
 
       render() {
         return(

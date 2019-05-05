@@ -34,58 +34,54 @@ class Login extends React.Component {
             }
         })
 
-
-    }
-
-
-    render() {
-        return ( <
-            form onSubmit = { this.handleLogin } >
-            <
-            h3 > UserName: < /h3> <
-            input type = 'text'
-            name = 'username'
-            placeholder = 'UserName'
-            value = { this.state.login.username }
-            onChange = { this.handleInput }
-            />
-
-            <
-            h3 > Password: < /h3> <
-            input type = 'text'
-            name = 'password'
-            placeholder = 'Password'
-            value = { this.state.login.password }
-            onChange = { this.handleInput }
-            />
+    
+}
 
 
-            <
-            button > {
-                this.props.loggingIn ? ( <
-                    Loader type = "ThreeDots"
-                    color = "green"
-                    height = "10"
-                    width = "30" / >
-                ) : (
-                    'Login'
-                )
-            } <
-            /button>
+        render() {
+            return (
+                <form onSubmit={this.handleLogin}>
+                    <h3>UserName: </h3>
+                    <input
+                       type='text'
+                       name='username'
+                       placeholder='UserName'
+                       value={this.state.login.username}
+                       onChange={this.handleInput} 
+                       />
+
+                    <h3>Password: </h3>
+                    <input
+                        type='text'
+                        name='password'
+                        placeholder='Password'
+                        value={this.state.login.password}
+                        onChange={this.handleInput} 
+                        />
 
 
-            <
-            /form>
-        )
-    }
+                     <button>
+                        {this.props.loggingIn ? (
+                        <Loader type="ThreeDots" color="green" height="10" width="30" />
+                        ) : (
+                        'Login'
+                        )}
+                    </button>
+
+
+                </form>
+            )
+        }
 
 }
 
 
 const mapStateToProps = ({ loggingIn }) => ({
     loggingIn
-});
-
-export default connect(
-    mapStateToProps, { login }
-)(Login);
+  });
+  
+  export default connect(
+    mapStateToProps,
+    { login }
+  )(Login);
+  

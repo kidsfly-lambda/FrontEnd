@@ -73,7 +73,13 @@ class App extends React.Component {
   render() {
     return (
       <>
-    
+       <Route
+      exact
+      path="/"
+      component={_ => (
+        <Login err={this.state.loginErr} findUser={this.findUser} />
+      )}
+    />
       <Route
       exact
       path="/login"
@@ -83,6 +89,7 @@ class App extends React.Component {
     />
     
     <Route
+    exact
     path="/signup"
     component={_ => (
       <SignUp err={this.state.signUpErr} addUser={this.addUser} />

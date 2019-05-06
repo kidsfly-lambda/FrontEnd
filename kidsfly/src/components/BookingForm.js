@@ -9,7 +9,7 @@ class BookingForm extends Component {
         this.state = {
             flight: {
                 airport: '',
-                airplane: '',
+                airline: '',
                 departure: '',
                 numberOfKids: ''
             }
@@ -63,17 +63,15 @@ class BookingForm extends Component {
             name = "departure" /
             >
 
-            <
-            input onChange = { this.handleInputChange }
+            <input 
+            onChange = { this.handleInputChange }
             placeholder = "Number Of Kids"
             value = { this.state.flight.numberOfKids }
-            name = "numberOfKids" /
-            >
+            name = "numberOfKids" />
 
-            <
-            button type = "submit" > Add Flight < /button> <
-            /form> <
-            /div>
+            <button type = "submit" > Add Flight </button> 
+            </form> 
+            </div>
         );
     }
 }

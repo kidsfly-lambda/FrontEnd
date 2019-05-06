@@ -1,4 +1,4 @@
-import { ERROR, FETCHING, FETCHED, ADD, LOGIN_START, LOGIN_SUCCESS } from "../actions";
+import { ERROR, FETCHING, FETCHED, ADD, LOGIN_START, LOGIN_SUCCESS, FORM_POST } from "../actions";
 
 const initialState = {
     users: [],
@@ -7,7 +7,8 @@ const initialState = {
     updatingUser: false,
     deletingUser: false,
     loggingIn: false,
-    error: null
+    error: null,
+    flights: []
 };
 
 
@@ -37,6 +38,8 @@ export const usersReducer = (state = initialState, action) => {
             return {...state, fetchingUsers: false, addedUser: true };
         case ERROR:
             return {...state, error: action.payload };
+        case FORM_POST:
+            return {...state, flights: [...state.flights, action.payload] }
         default:
             return state;
     }

@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import axiosWithAuth from '../axiosWithAuth';
+
 export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 
@@ -11,6 +13,8 @@ export const ADD = 'ADD';
 export const REGISTER_START = "REGISTER_START";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAILURE = "REGISTER_FAILURE";
+
+export const FORM_POST = 'FORM_POST';
 
 export const login = creds => dispatch => {
     dispatch({ type: LOGIN_START });
@@ -73,6 +77,36 @@ export const addUsers = user => {
             })
         )
 }
+
+
+
+export const addForm = flight => dispatch => {
+    dispatch({ type: ADD })
+    return axiosWithAuth().post('https://kidsfly-frontend.netlify.com/booking', flight)
+        .then(({ data }) => {
+            dispatch({
+                type: FORM_POST,
+                payload: data
+            })
+        })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // export const addUsers = smurf => {

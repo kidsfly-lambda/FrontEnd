@@ -1,87 +1,72 @@
-import React from 'react'
 
-import Loader from 'react-loader-spinner';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import { connect } from 'react-redux';
-
-import { login } from '../actions';
-
-class Login extends React.Component {
-    state = {
-        login: {
-            username: '',
-            password: ''
-        }
-    }
-
-
-    handleInput = e => {
-        this.setState({
-            login: {
-                ...this.state.login,
-                [e.target.name]: e.target.value
-            }
-        })
-    }
-
-    handleLogin = e => {
-        e.preventDefault()
-        this.props.login(this.state.login)
-        this.setState({
-            login: {
-                username: '',
-                password: ''
-            }
-        })
-
-    
+export default class LogIn extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: "",
+      pass: "",
+      err: null
+    };
+  }
+  componentDidMount() {
+    this.setState({ err: this.props.err });
+  }
+  handleChange = e =>
+    this.setState({
+      [e.target.dataset.name]: e.target.value
+    });
+  handleSubmit = e => {
+    e.preventDefault();
+    if (this.state.user && this.state.pass)
+      this.props.findUser({
+        username: this.state.user,
+        password: this.state.pass
+      });
+    else this.setState({ err: "Please fill out all forms" });
+  };
+  render() {
+    return (
+      <div className="form_container">
+        <form onSubmit={this.handleSubmit} className="login">
+          <h2 className="login_title">Log In</h2>
+          {this.state.err && (
+            <div className="login_error">
+              <div className="login_error_text">{this.state.err}</div>
+            </div>
+          )}
+          <input
+            className="login_input"
+            type="text"
+            data-name="user"
+            placeholder="Username"
+            value={this.state.user}
+            onChange={this.handleChange}
+            required
+          />
+          <input
+            className="login_input"
+            type="password"
+            data-name="pass"
+            placeholder="Password"
+            value={this.state.pass}
+            onChange={this.handleChange}
+            required
+          />
+          <button
+            onSubmit={this.handleSubmit}
+            onClick={this.handleSubmit}
+            className="login_button"
+          >
+            Log In
+          </button>
+          <Link className="login_signupContainer" to="/signup">
+            <div className="login_signup">Sign Up</div>
+          </Link>
+        </form>
+      </div>
+    );
+  }
 }
-
-
-        render() {
-            return (
-                <form onSubmit={this.handleLogin}>
-                    <h3>UserName: </h3>
-                    <input
-                       type='text'
-                       name='username'
-                       placeholder='UserName'
-                       value={this.state.login.username}
-                       onChange={this.handleInput} 
-                       />
-
-                    <h3>Password: </h3>
-                    <input
-                        type='text'
-                        name='password'
-                        placeholder='Password'
-                        value={this.state.login.password}
-                        onChange={this.handleInput} 
-                        />
-
-
-                     <button>
-                        {this.props.loggingIn ? (
-                        <Loader type="ThreeDots" color="green" height="10" width="30" />
-                        ) : (
-                        'Login'
-                        )}
-                    </button>
-
-
-                </form>
-            )
-        }
-
-}
-
-
-const mapStateToProps = ({ loggingIn }) => ({
-    loggingIn
-  });
-  
-  export default connect(
-    mapStateToProps,
-    { login }
-  )(Login);
-  

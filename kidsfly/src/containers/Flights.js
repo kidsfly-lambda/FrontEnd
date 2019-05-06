@@ -8,6 +8,17 @@ class Flights extends React.Component {
         super(props)
     }
 
+
+    // const aa = () 
+    
+    logout = async (props) => {
+        const { history } = props
+        await localStorage.clear()
+        history.push("/login")
+      }
+    
+  
+
     render() {
         return(
             <div>
@@ -19,6 +30,9 @@ class Flights extends React.Component {
                     <h3>{flight.numberOfKids}</h3>
                 </div>
             )}
+
+            <button onClick={this.logout}></button>
+
         </div> 
         )
     }

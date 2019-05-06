@@ -1,0 +1,4 @@
+[build]
+base = "kidsfly/"
+publish = "kidsfly/build"
+command = "yarn build"

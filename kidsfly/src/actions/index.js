@@ -28,7 +28,7 @@ export const login = creds => dispatch => {
 
 
 
-const baseURL = 'https://kidsfly.herokuapp.com';
+const baseURL = 'https://kidsfly.herokuapp.com/';
 
 export const fetchUsers = () => {
     return dispatch => {
@@ -82,7 +82,7 @@ export const addUsers = user => {
 
 export const addForm = flight => dispatch => {
     dispatch({ type: ADD })
-    return axiosWithAuth().post('https://kidsfly-frontend.netlify.com/booking', flight)
+    return axiosWithAuth().post('https://kidsfly.herokuapp.com/booking', flight)
         .then(({ data }) => {
             dispatch({
                 type: FORM_POST,

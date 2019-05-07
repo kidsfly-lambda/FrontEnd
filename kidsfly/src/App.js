@@ -29,7 +29,8 @@ class App extends React.Component {
       lastName: "Magdaleno",
       loginErr: null,
       signUpErr: null,
-      ready: false
+      ready: false,
+      loggedIn: false
     };
   }
 
@@ -59,7 +60,9 @@ class App extends React.Component {
       .then(res => {
         this.setState({ user: res.data });
         localStorage.setItem("user", res.data);
+
         this.props.history.push("/Flights");
+
         
       })
       .catch(err =>
@@ -68,6 +71,7 @@ class App extends React.Component {
             "There was an issue logging in. Check username/password or sign up if you haven't"
         })
       );
+  
   signOut = _ => {
     localStorage.clear();
     this.setState({ user: null });
@@ -95,6 +99,7 @@ class App extends React.Component {
 <Route path="/Flights" component={Flights} />
      
       </Switch>
+
        
     
     <Route
@@ -104,6 +109,7 @@ class App extends React.Component {
       <SignUp err={this.state.signUpErr} addUser={this.addUser} />
     )}
   />
+
 
  
 {/* <Route
@@ -115,6 +121,7 @@ class App extends React.Component {
   /> */}
 
 <Route path="/Flights" component={Flights} />
+
 
   </>
     

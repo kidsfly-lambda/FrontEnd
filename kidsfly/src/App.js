@@ -75,20 +75,20 @@ class App extends React.Component {
     return (
       <>
       <Switch>
-      <Route
-      
-      path="/login"
-      component={_ => (
-        <Login err={this.state.loginErr} findUser={this.findUser} />
-      )}
-    />
-      <Route
-      
-      path="/"
-      component={_ => (
-        <BookingForm err={this.state.loginErr} findUser={this.findUser} />
-      )}
-    />
+          <Route
+          
+          path="/login"
+          component={_ => (
+            <Login err={this.state.loginErr} findUser={this.findUser} />
+          )}
+        />
+          <Route
+          
+          path="/"
+          component={_ => (
+            <BookingForm err={this.state.loginErr} findUser={this.findUser} />
+          )}
+        />
      
       </Switch>
        

@@ -82,6 +82,84 @@ position: absolute;
 `
 
 
+
+
+const SignupStyle = styled.div `
+height: 800px;
+background-color: rgb(76, 92, 150);
+background-color: rgb(46, 49, 65);
+background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgb(76, 92, 150));
+background-size: auto, cover;
+// background-image: url("https://46gb9l10qld536ktv928ai60-wpengine.netdna-ssl.com/wp-content/uploads/2018/09/kid-airport.jpg
+// ");
+//   background-size: cover;
+position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  padding: 0 20px;
+  align-items: center;
+    align-content: center;
+    justify-content: center;
+    display: flex;
+  .form_container {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+  background-size: cover;
+  height: 100vh;
+  justify-content: center;
+   
+}
+  form {
+    display: flex;
+    max-width: 60%;
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    background: rgb(46, 49, 65);
+    opacity: 1.0;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    padding: 30px;
+    border-radius: 5px;
+  }
+  body{
+   
+  }
+  input {
+    display: flex;
+  flex-direction: column;
+  margin-right: 4%;
+  margin: 10px 0;
+  background: transparent;
+  border: 0px;
+  border-bottom: 2px solid #c5ecfd;
+  padding: 10px;
+  color: #c5ecfd;
+  width: 100%;
+  
+  
+  }
+  button {
+    background: rgb(76, 92, 150);
+    text-align: center;
+    padding: 15px;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+`
+
+
 export default class LogIn extends React.Component {
   constructor(props) {
     super(props);
@@ -130,8 +208,7 @@ export default class LogIn extends React.Component {
             placeholder="Username"
             value={this.state.user}
             onChange={this.handleChange}
-            required
-          />
+            required/>
           <input
             className="login_input"
             type="password"
@@ -139,13 +216,11 @@ export default class LogIn extends React.Component {
             placeholder="Password"
             value={this.state.pass}
             onChange={this.handleChange}
-            required
-          />
+            required/>
           <button
             onSubmit={this.handleSubmit}
             onClick={this.handleSubmit}
-            className="login_button"
-          >
+            className="login_button">
             Log In
           </button>
           <Link className="login_signupContainer" to="/signup">

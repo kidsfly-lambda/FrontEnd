@@ -1,21 +1,20 @@
 // a container component for displaying flights that individual user has scheduled
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link, withRouter } from 'react-router-dom';
 import { fetchUsers } from '../actions'
+
 
 class Flights extends React.Component {
     constructor(props) {
         super(props)
     }
-
-
-    // const aa = () 
     
-    logout = async (props) => {
-        const { history } = props
-        await localStorage.clear()
-        history.push("/login")
-      }
+    // logout = async (props) => {
+    //     const { history } = props
+    //     await localStorage.clear()
+    //     history.push("/login")
+    //   }
     
   
 

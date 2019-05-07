@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { addUsers } from '../actions'
+import { addForm } from '../actions'
+import { Link, withRouter } from 'react-router-dom';
+import history from 'react-redux'
 // import axios from 'axios'
 
 class BookingForm extends Component {
@@ -18,7 +20,7 @@ class BookingForm extends Component {
 
     addUsers = event => {
         event.preventDefault();
-        this.props.addUsers(this.state.flight);
+        this.props.addForm(this.state.flight);
         this.setState({
             flight: {
                 airport: '',
@@ -28,6 +30,7 @@ class BookingForm extends Component {
             }
 
         });
+        this.props.history.push("/Flights");
     };
 
     handleInputChange = e => {
@@ -40,38 +43,36 @@ class BookingForm extends Component {
     };
 
     render() {
-        return ( <
+        return (
+
+            <
             div className = "BookingForm" >
             <
-            form onSubmit = { this.addFlight } >
+            form onSubmit = { this.addUsers } >
             <
             input onChange = { this.handleInputChange }
             placeholder = "name"
             value = { this.state.flight.airport }
-            name = "airport" /
-            >
+            name = "airport" / >
             <
             input onChange = { this.handleInputChange }
             placeholder = "airplane"
             value = { this.state.flight.airplane }
-            name = "airplane" /
-            >
+            name = "airplane" / >
             <
             input onChange = { this.handleInputChange }
             placeholder = "departure"
             value = { this.state.flight.departure }
-            name = "departure" /
-            >
+            name = "departure" / >
 
-            <input 
-            onChange = { this.handleInputChange }
+            <
+            input onChange = { this.handleInputChange }
             placeholder = "Number Of Kids"
             value = { this.state.flight.numberOfKids }
-            name = "numberOfKids" />
+            name = "numberOfKids" / >
 
-            <button type = "submit" > Add Flight </button> 
-            </form> 
-            </div>
+            <
+            button type = "submit" > Add Flight < /button>  </form > < /div>
         );
     }
 }
@@ -83,4 +84,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, { addUsers })(BookingForm)
+export default connect(mapStateToProps, { addForm })(BookingForm)

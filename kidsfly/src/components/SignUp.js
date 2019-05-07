@@ -1,5 +1,75 @@
 import React from "react";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
+
+const SignupStyle = styled.div `
+height: 800px;
+background-color: rgb(76, 92, 150);
+background-color: rgb(46, 49, 65);
+background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgb(76, 92, 150));
+background-size: auto, cover;
+// background-image: url("https://46gb9l10qld536ktv928ai60-wpengine.netdna-ssl.com/wp-content/uploads/2018/09/kid-airport.jpg
+// ");
+//   background-size: cover;
+position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  padding: 0 20px;
+  align-items: center;
+    align-content: center;
+    justify-content: center;
+    display: flex;
+  .form_container {
+  background-size: cover;
+  height: 100vh;
+  justify-content: center;
+}
+  form {
+    display: flex;
+    max-width: 60%;
+    width: 300px;
+    margin: 0 auto;
+    
+    background: rgb(46, 49, 65);
+    opacity: 1.0;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    padding: 30px;
+    border-radius: 5px;
+  }
+  body{
+   
+  }
+
+  input {
+    display: flex;
+  flex-direction: column;
+  margin-right: 4%;
+  margin: 10px 0;
+  background: transparent;
+  border: 0px;
+  border-bottom: 2px solid #c5ecfd;
+  padding: 10px;
+  color: #c5ecfd;
+  width: 100%;
+  
+  
+  }
+
+  button {
+    background: rgb(76, 92, 150);
+    text-align: center;
+    padding: 15px;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+`
 
 export default class SignUp extends React.Component {
   constructor(props) {
@@ -64,13 +134,15 @@ export default class SignUp extends React.Component {
   render() {
     return (
       <div className="form_container">
+      <SignupStyle>
         <form onSubmit={this.handleSubmit} className="signup">
-          <h2 className="signup_title">Sign Up</h2>
+          {/* <h2 className="signup_title">Sign Up</h2> */}
           {this.state.err && (
             <div className="login_error">
               <div className="login_error_text">{this.state.err}</div>
             </div>
           )}
+          <div className='inputs'></div>
           <input
             className="signup_input"
             type="email"
@@ -123,11 +195,14 @@ export default class SignUp extends React.Component {
           >
             Sign Up
           </button>
+          <div className='fa'></div>
           <Link className="signup_loginContainer" to="/login">
             <div className="signup_login">Log In</div>
           </Link>
         </form>
+        </SignupStyle>
       </div>
+      
     );
   }
 }

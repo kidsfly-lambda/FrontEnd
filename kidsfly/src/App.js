@@ -1,3 +1,4 @@
+
 import React from 'react';
 import UserForm from './components/UserForm';
 import Login from './components/Login';
@@ -59,8 +60,9 @@ class App extends React.Component {
       .then(res => {
         this.setState({ user: res.data });
         localStorage.setItem("user", res.data);
-        this.props.history.push("/bookingform");
-        
+
+        this.props.history.push("/Flights");
+
         
       })
       .catch(err =>
@@ -77,23 +79,27 @@ class App extends React.Component {
   render() {
     return (
       <>
+      <Switch>
+      <Route
       
-          <Route
-          
-          path="/login"
-          component={_ => (
-            <Login err={this.state.loginErr}  findUser={this.findUser} />
-          )}
-        />
-          <Route
-          
-          path="/"
-          component={_ => (
-            <Login loggedIn={this.state.loggedIn} findUser={this.findUser} />
-          )}
-        />
+      exact path="/"
+      component={_=> (
+        <Login err={this.state.loginErr} findUser={this.findUser} />
+      )}
+    />
+      {/* <Route
+      
+      path="/bookingform"
+      component={_ => (
+        <BookingForm err={this.state.loginErr} findUser={this.findUser} />
+      )}
+    /> */}
+
+<Route path="/BookingForm" component={BookingForm} />
+<Route path="/Flights" component={Flights} />
      
-      
+      </Switch>
+
        
     
     <Route
@@ -104,13 +110,19 @@ class App extends React.Component {
     )}
   />
 
-    <Route 
+
+ 
+{/* <Route
     exact
-    path="/bookingform"
+    path="/Flights"
     component={_ => (
-      <BookingForm loggedIn={this.state.loggedIn} addUser={this.addUser} />
+      <Flights err={this.state.signUpErr} addUser={this.addUser} />
     )}
-    />
+  /> */}
+
+<Route path="/Flights" component={Flights} />
+
+
   </>
     
     )}

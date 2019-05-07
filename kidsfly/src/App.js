@@ -36,7 +36,7 @@ class App extends React.Component {
     // add a user
     axios({
             method: "post",
-            url: "https://kidsfly-frontend.netlify.com/register",
+            url: "https://kidsfly.herokuapp.com/register",
             data: user
         })
         .then(res => {
@@ -54,7 +54,7 @@ class App extends React.Component {
   findUser = user =>
     // find a user
     axios
-      .post('https://kidsfly-frontend.netlify.com/login', user)
+      .post('https://kidsfly.herokuapp.com/login', user)
       .then(res => {
         this.setState({ user: res.data });
         localStorage.setItem("user", res.data);

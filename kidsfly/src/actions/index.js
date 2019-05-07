@@ -18,7 +18,7 @@ export const FORM_POST = 'FORM_POST';
 
 export const login = creds => dispatch => {
     dispatch({ type: LOGIN_START });
-    return axios.post('https://kidsfly.herokuapp.com/login', creds).then(res => {
+    return axios.post('https://kidsfly-frontend.netlify.com/login', creds).then(res => {
         localStorage.setItem('token', res.data.payload);
         dispatch({ type: LOGIN_SUCCESS, payload: res.data.payload });
     });
@@ -28,7 +28,7 @@ export const login = creds => dispatch => {
 
 
 
-const baseURL = 'https://kidsfly.herokuapp.com';
+const baseURL = 'https://kidsfly-frontend.netlify.com/';
 
 export const fetchUsers = () => {
     return dispatch => {

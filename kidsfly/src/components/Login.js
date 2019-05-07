@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { Redirect } from 'react-router-dom';
+
 
 
 
@@ -98,7 +100,9 @@ export default class LogIn extends React.Component {
     });
   handleSubmit = e => {
     e.preventDefault();
+    this.props.loggedInMethod();
     if (this.state.user && this.state.pass)
+      
       this.props.findUser({
         username: this.state.user,
         password: this.state.pass
@@ -106,6 +110,9 @@ export default class LogIn extends React.Component {
     else this.setState({ err: "Please fill out all forms" });
   };
   render() {
+    if (this.props.loggedIn) {
+      return <Redirect to="/bookingform" />;
+    }
     return (
       <SignupStyle>
       <div className="form_container">

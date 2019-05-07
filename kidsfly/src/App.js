@@ -28,7 +28,8 @@ class App extends React.Component {
       lastName: "Magdaleno",
       loginErr: null,
       signUpErr: null,
-      ready: false
+      ready: false,
+      loggedIn: false
     };
   }
 
@@ -58,7 +59,8 @@ class App extends React.Component {
       .then(res => {
         this.setState({ user: res.data });
         localStorage.setItem("user", res.data);
-        this.props.history.push("/");
+        this.props.history.push("/bookingform");
+        
         
       })
       .catch(err =>
@@ -67,6 +69,11 @@ class App extends React.Component {
             "There was an issue logging in. Check username/password or sign up if you haven't"
         })
       );
+  loggedInMethod = _ => {
+    this.setState({
+      loggedIn: true
+    });
+  }
   signOut = _ => {
     localStorage.clear();
     this.setState({ user: null });
@@ -74,23 +81,23 @@ class App extends React.Component {
   render() {
     return (
       <>
-      <Switch>
+      
           <Route
           
           path="/login"
           component={_ => (
-            <Login err={this.state.loginErr} findUser={this.findUser} />
+            <Login err={this.state.loginErr} loggedInMethod={this.loggedInMethod} findUser={this.findUser} />
           )}
         />
           <Route
           
           path="/"
           component={_ => (
-            <BookingForm err={this.state.loginErr} findUser={this.findUser} />
+            <Login loggedIn={this.state.loggedIn} findUser={this.findUser} />
           )}
         />
      
-      </Switch>
+      
        
     
     <Route
@@ -100,6 +107,14 @@ class App extends React.Component {
       <SignUp err={this.state.signUpErr} addUser={this.addUser} />
     )}
   />
+
+    <Route 
+    exact
+    path="/bookingform"
+    component={_ => (
+      <BookingForm loggedIn={this.state.loggedIn} addUser={this.addUser} />
+    )}
+    />
   </>
     
     )}

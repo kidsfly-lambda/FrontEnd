@@ -1,4 +1,3 @@
-
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -6,7 +5,6 @@ import { Link } from "react-router-dom";
 
 
 const SignupStyle = styled.div `
-
 height: 800px;
 background-color: rgb(76, 92, 150);
 background-color: rgb(46, 49, 65);
@@ -55,7 +53,6 @@ position: absolute;
   body{
    
   }
-
   input {
     display: flex;
   flex-direction: column;
@@ -70,7 +67,6 @@ position: absolute;
   
   
   }
-
   button {
     background: rgb(76, 92, 150);
     text-align: center;
@@ -127,8 +123,7 @@ export default class LogIn extends React.Component {
             placeholder="Username"
             value={this.state.user}
             onChange={this.handleChange}
-            required
-          />
+            required/>
           <input
             className="login_input"
             type="password"
@@ -136,13 +131,11 @@ export default class LogIn extends React.Component {
             placeholder="Password"
             value={this.state.pass}
             onChange={this.handleChange}
-            required
-          />
+            required/>
           <button
             onSubmit={this.handleSubmit}
             onClick={this.handleSubmit}
-            className="login_button"
-          >
+            className="login_button">
             Log In
           </button>
           <Link className="login_signupContainer" to="/signup">

@@ -100,7 +100,7 @@ export default class LogIn extends React.Component {
     });
   handleSubmit = e => {
     e.preventDefault();
-    this.props.loggedInMethod();
+   
     if (this.state.user && this.state.pass)
       
       this.props.findUser({

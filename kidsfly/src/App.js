@@ -69,11 +69,7 @@ class App extends React.Component {
             "There was an issue logging in. Check username/password or sign up if you haven't"
         })
       );
-  loggedInMethod = _ => {
-    this.setState({
-      loggedIn: true
-    });
-  }
+  
   signOut = _ => {
     localStorage.clear();
     this.setState({ user: null });
@@ -86,7 +82,7 @@ class App extends React.Component {
           
           path="/login"
           component={_ => (
-            <Login err={this.state.loginErr} loggedInMethod={this.loggedInMethod} findUser={this.findUser} />
+            <Login err={this.state.loginErr}  findUser={this.findUser} />
           )}
         />
           <Route

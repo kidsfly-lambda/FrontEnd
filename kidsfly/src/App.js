@@ -61,7 +61,7 @@ class App extends React.Component {
         this.setState({ user: res.data });
         localStorage.setItem("user", res.data);
 
-        this.props.history.push("/Flights");
+        this.props.history.push("/BookingForm");
 
         
       })
